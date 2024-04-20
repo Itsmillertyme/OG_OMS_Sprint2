@@ -135,6 +135,7 @@
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
             Controls.Add(lblLogin);
+            MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

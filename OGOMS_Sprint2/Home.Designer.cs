@@ -42,6 +42,7 @@
             btnHome.BackColor = Color.Transparent;
             btnHome.Dock = DockStyle.Right;
             btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Image = (Image) resources.GetObject("btnHome.Image");
             btnHome.Location = new Point(896, 0);
@@ -56,6 +57,7 @@
             btnProfile.BackColor = Color.Transparent;
             btnProfile.Dock = DockStyle.Right;
             btnProfile.FlatAppearance.BorderSize = 0;
+            btnProfile.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnProfile.FlatStyle = FlatStyle.Flat;
             btnProfile.Image = (Image) resources.GetObject("btnProfile.Image");
             btnProfile.Location = new Point(940, 0);
@@ -64,6 +66,7 @@
             btnProfile.Size = new Size(44, 44);
             btnProfile.TabIndex = 1;
             btnProfile.UseVisualStyleBackColor = false;
+            btnProfile.Click += btnProfile_Click;
             // 
             // pnlMenu_Home
             // 
@@ -139,6 +142,7 @@
             rbnCustMng.Size = new Size(120, 120);
             rbnCustMng.TabIndex = 7;
             rbnCustMng.UseVisualStyleBackColor = false;
+            rbnCustMng.Click += rbnCustMng_Click;
             // 
             // lblRoutePlan
             // 
@@ -178,6 +182,7 @@
             Controls.Add(lblSubmitOrder);
             Controls.Add(rbnSubmitOrder);
             Controls.Add(pnlMenu_Home);
+            MaximizeBox = false;
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

@@ -110,6 +110,7 @@
             Controls.Add(tbx2FA);
             Controls.Add(lbl2FA);
             Controls.Add(lblLogin);
+            MaximizeBox = false;
             Name = "_2FA";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";
