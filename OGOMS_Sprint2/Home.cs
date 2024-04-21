@@ -13,7 +13,10 @@
         }
 
         private void rbnSubmitOrder_Click(object sender, EventArgs e) {
-
+            Hide();
+            CreateNewOrder cno = new CreateNewOrder();
+            cno.ShowDialog();
+            Close();
         }
 
         private void btnProfile_Click(object sender, EventArgs e) {

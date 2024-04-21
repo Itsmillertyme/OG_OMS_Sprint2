@@ -51,6 +51,11 @@ namespace OGOMS_Sprint2 {
             Close();
         }
 
+        private void rbnAddNewCust_Click(object sender, EventArgs e) {
+            AddCustomer ac = new AddCustomer();
+            ac.ShowDialog();
+        }
+
         struct TableEntry {
             public string Name { get; set; }
             public int CustomerID { get; set; }

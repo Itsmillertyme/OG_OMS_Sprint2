@@ -35,6 +35,7 @@
             btnProfile = new Button();
             lblCustomerManagement = new Label();
             dgvCustomerManagement = new DataGridView();
+            rbnAddNewCust = new CustomControls.RoundedButton();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) dgvCustomerManagement).BeginInit();
             SuspendLayout();
@@ -114,7 +115,7 @@
             dgvCustomerManagement.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvCustomerManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCustomerManagement.BackgroundColor = Color.FromArgb(  222,   235,   247);
-            dgvCustomerManagement.BorderStyle = BorderStyle.Fixed3D;
+            dgvCustomerManagement.BorderStyle = BorderStyle.None;
             dgvCustomerManagement.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(  47,   85,   151);
@@ -125,7 +126,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvCustomerManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCustomerManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point,  0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
@@ -154,12 +155,28 @@
             dgvCustomerManagement.Size = new Size(720, 240);
             dgvCustomerManagement.TabIndex = 6;
             // 
+            // rbnAddNewCust
+            // 
+            rbnAddNewCust.BackColor = Color.FromArgb(  46,   117,   182);
+            rbnAddNewCust.FlatAppearance.BorderSize = 0;
+            rbnAddNewCust.FlatStyle = FlatStyle.Flat;
+            rbnAddNewCust.Font = new Font("Segoe UI", 12F,  FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point,  0);
+            rbnAddNewCust.ForeColor = Color.White;
+            rbnAddNewCust.Location = new Point(727, 123);
+            rbnAddNewCust.Name = "rbnAddNewCust";
+            rbnAddNewCust.Size = new Size(100, 59);
+            rbnAddNewCust.TabIndex = 25;
+            rbnAddNewCust.Text = "Add New\r\nCustomer\r\n";
+            rbnAddNewCust.UseVisualStyleBackColor = false;
+            rbnAddNewCust.Click += rbnAddNewCust_Click;
+            // 
             // CustomerManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(984, 561);
+            Controls.Add(rbnAddNewCust);
             Controls.Add(dgvCustomerManagement);
             Controls.Add(lblCustomerManagement);
             Controls.Add(pnlMenu);
@@ -182,5 +199,6 @@
         private Button btnProfile;
         private Label lblCustomerManagement;
         private DataGridView dgvCustomerManagement;
+        private CustomControls.RoundedButton rbnAddNewCust;
     }
 }
