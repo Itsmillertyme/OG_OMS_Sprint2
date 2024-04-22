@@ -28,13 +28,19 @@
             //hide profile form
             Hide();
 
-            //get reference to 'home' form
-            Home home = (Home) Application.OpenForms["Home"];
-            //close home form
-            home.Close();
+            Login newLogin = new Login();
+            newLogin.ShowDialog();
 
-            Login login = new Login();
-            login.ShowDialog();
+            //get reference to 'home' form
+            //Home home = (Home) Application.OpenForms["Home"];
+            for (int i = 0; i < Application.OpenForms.Count; i++) {
+
+                if (Application.OpenForms[i].Name != "Profile") {
+                    //Debug.WriteLine(Application.OpenForms[i]);
+                    Application.OpenForms[i].Dispose();
+                }
+            }
+
             Close();
         }
 

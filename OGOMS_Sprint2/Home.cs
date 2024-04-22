@@ -4,14 +4,6 @@
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-
-        }
-
         private void rbnSubmitOrder_Click(object sender, EventArgs e) {
             Hide();
             CreateNewOrder cno = new CreateNewOrder();
@@ -31,10 +23,10 @@
                 new Customer("Vanausdal, Jamal", "53075 Sw 152nd Ter #615", "8:00am-1:00pm", 87654321, 12345),
                 new Customer("Greenbush, Shonda", "82 Us Highway 46", "8:00am-1:00pm", 87654321, 12345),
             new Customer("Gibes, Cory", "82 Us Highway 46", "6:00pm-2:00am", 98765432, 12345)};
-            Hide();
+            //Hide();
             CustomerManagement customerManagement = new CustomerManagement(customers);
             customerManagement.ShowDialog();
-            Close();
+            //Close();
         }
     }
 }

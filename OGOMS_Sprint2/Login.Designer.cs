@@ -139,6 +139,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";
+            Load += Login_Load;
             pnlMenu_Login.ResumeLayout(false);
             pnlMenu_Login.PerformLayout();
             ResumeLayout(false);

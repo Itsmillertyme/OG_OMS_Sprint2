@@ -154,6 +154,7 @@
             dgvCustomerManagement.RowTemplate.Height = 40;
             dgvCustomerManagement.Size = new Size(720, 240);
             dgvCustomerManagement.TabIndex = 6;
+            dgvCustomerManagement.SelectionChanged += dgvCustomerManagement_SelectionChanged;
             // 
             // rbnAddNewCust
             // 

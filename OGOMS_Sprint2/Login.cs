@@ -10,5 +10,10 @@
             _2fa.ShowDialog();
             Close();
         }
+
+        private void Login_Load(object sender, EventArgs e) {
+
+        }
+
     }
 }

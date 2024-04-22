@@ -56,6 +56,10 @@ namespace OGOMS_Sprint2 {
             ac.ShowDialog();
         }
 
+        private void dgvCustomerManagement_SelectionChanged(object sender, EventArgs e) {
+            dgvCustomerManagement.ClearSelection();
+        }
+
         struct TableEntry {
             public string Name { get; set; }
             public int CustomerID { get; set; }
