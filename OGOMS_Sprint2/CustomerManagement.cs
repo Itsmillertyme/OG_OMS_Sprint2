@@ -3,12 +3,15 @@
 namespace OGOMS_Sprint2 {
     public partial class CustomerManagement : Form {
 
+        //**Fields**
         List<Customer> customers;
+
+        //**Contructors**
         public CustomerManagement() {
             customers = new List<Customer>();
             InitializeComponent();
         }
-
+        //
         public CustomerManagement(List<Customer> customers) : this() {
             this.customers = customers;
             Debug.WriteLine(customers);
@@ -16,6 +19,25 @@ namespace OGOMS_Sprint2 {
 
         }
 
+        //**Event Handlers**
+        private void btnHome_Click(object sender, EventArgs e) {
+            Hide();
+            Home home = new Home();
+            home.ShowDialog();
+            Close();
+
+        }
+        //
+        private void rbnAddNewCust_Click(object sender, EventArgs e) {
+            AddCustomer ac = new AddCustomer();
+            ac.Show();
+        }
+        //
+        private void dgvCustomerManagement_SelectionChanged(object sender, EventArgs e) {
+            dgvCustomerManagement.ClearSelection();
+        }
+
+        //**Utility Methods**
         void SetDGVFromList(List<Customer> customers) {
             List<TableEntry> entries = new List<TableEntry>();
             foreach (Customer customer in customers) {
@@ -44,22 +66,7 @@ namespace OGOMS_Sprint2 {
 
         }
 
-        private void btnHome_Click(object sender, EventArgs e) {
-            Hide();
-            Home home = new Home();
-            home.ShowDialog();
-            Close();
-        }
-
-        private void rbnAddNewCust_Click(object sender, EventArgs e) {
-            AddCustomer ac = new AddCustomer();
-            ac.ShowDialog();
-        }
-
-        private void dgvCustomerManagement_SelectionChanged(object sender, EventArgs e) {
-            dgvCustomerManagement.ClearSelection();
-        }
-
+        //**Struct**
         struct TableEntry {
             public string Name { get; set; }
             public int CustomerID { get; set; }

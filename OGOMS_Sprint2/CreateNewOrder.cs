@@ -3,6 +3,7 @@
 namespace OGOMS_Sprint2 {
     public partial class CreateNewOrder : Form {
 
+        //**Fields**
         public List<InventoryItem> cartItems { get; } = new List<InventoryItem>();
         List<InventoryItem> productList = new List<InventoryItem>();
 
@@ -10,11 +11,89 @@ namespace OGOMS_Sprint2 {
             InitializeComponent();
         }
 
+        //**Event Handlers*
+        private void CreateNewOrder_Load(object sender, EventArgs e) {
+
+            //TESTING DATA
+            //productList = new List<InventoryItem> {
+            //    new InventoryItem(061010,197,0,"3D BLUE 12/16 CAN", "3D ENERGY", "3D ENERGY"),
+            //    new InventoryItem(061014,138,0,"3D PURPLE 12/16 CAN", "3D ENERGY","3D ENERGY"),
+            //    new InventoryItem(301995,208,0,"6/750  80 PROOF BLUELAVA TEQ", "80 PROOF IMPORTS", "80 PROOF IMPORTS"),
+            //    new InventoryItem(060098,0,0,"AE WITCHSBREW 4/6C", "ALANI", "ALANI ENERGY"),
+            //    new InventoryItem(060099,0,0,"AE KIMADE 4/6C", "ALANI","ALANI ENERGY"),
+            //    new InventoryItem(061000,141,1,"AE BLUE SLUSH 4/6 CAN", "ALANI", "ALANI ENERGY")
+            //};
+
+            //Create product reader
+            ProductReader reader = new ProductReader();
+            productList = reader.GetInventory();
+
+            InitProductDGV(productList);
+        }
+        //
+        private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
+
+            dgvItemSearch.ClearSelection();
+
+        }
+        //
+        private void dgvCart_SelectionChanged(object sender, EventArgs e) {
+            dgvCart.ClearSelection();
+        }
+        //
+        private void btnHome_Click(object sender, EventArgs e) {
+            Hide();
+            Home home = new Home();
+            home.ShowDialog();
+            Close();
+
+        }
+        //
+        private void btnProfile_Click(object sender, EventArgs e) {
+            Hide();
+            Profile profile = new Profile();
+            profile.ShowDialog();
+            Close();
+        }
+        //
+        private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex == 0) {
+                cartItems.Add(productList[e.RowIndex]);
+
+                //foreach (InventoryItem item in cartItems) {
+                //    Debug.WriteLine(item);
+                //}
+
+                UpdateCartDGV(cartItems);
+            }
+        }
+        //
+        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e) {
+            Debug.WriteLine("Cart cell clicked");
+
+            if (e.ColumnIndex == 3) {
+                Debug.WriteLine("button clicked");
+                cartItems.RemoveAt(e.RowIndex);
+
+                UpdateCartDGV(cartItems);
+
+            }
+        }
+        //
+        private void rbnSubmit_Click(object sender, EventArgs e) {
+            Hide();
+            ReviewOrder ro = new ReviewOrder(tbxAcctID.Text, tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
+            ro.ShowDialog();
+            Close();
+            //Close this form after order submission
+        }
+
+        //**Utility Methods**
         void InitProductDGV(List<InventoryItem> items) {
             List<ProductTableEntry> entries = new List<ProductTableEntry>();
 
             foreach (InventoryItem item in items) {
-                entries.Add(new ProductTableEntry(item.description, item.supplierName, item.productID));
+                entries.Add(new ProductTableEntry(item.description, item.brandName, item.productID));
             }
 
             dgvItemSearch.DataSource = entries;
@@ -105,78 +184,31 @@ namespace OGOMS_Sprint2 {
 
         }
 
-        private void CreateNewOrder_Load(object sender, EventArgs e) {
+        private void tbxItemSearch_TextChanged(object sender, EventArgs e) {
 
-            productList = new List<InventoryItem> {
-                new InventoryItem(061010,197,0,"3D BLUE 12/16 CAN", "3D ENERGY", "3D ENERGY",17.99),
-                new InventoryItem(061014,138,0,"3D PURPLE 12/16 CAN", "3D ENERGY","3D ENERGY",27.99),
-                new InventoryItem(301995,208,0,"6/750  80 PROOF BLUELAVA TEQ", "80 PROOF IMPORTS", "80 PROOF IMPORTS",14.87),
-                new InventoryItem(060098,0,0,"AE WITCHSBREW 4/6C", "ALANI", "ALANI ENERGY",32.99),
-                new InventoryItem(060099,0,0,"AE KIMADE 4/6C", "ALANI","ALANI ENERGY",16.98),
-                new InventoryItem(061000,141,1,"AE BLUE SLUSH 4/6 CAN", "ALANI", "ALANI ENERGY",19.99)
-            };
-
-            //for testing, will load items from file
-            InitProductDGV(productList);
-        }
-
-        private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
-
-            dgvItemSearch.ClearSelection();
-
-        }
-
-        private void dgvCart_SelectionChanged(object sender, EventArgs e) {
-            dgvCart.ClearSelection();
-        }
-
-
-        private void btnHome_Click(object sender, EventArgs e) {
-            Hide();
-            Home home = new Home();
-            home.ShowDialog();
-            Close();
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e) {
-            Hide();
-            Profile profile = new Profile();
-            profile.ShowDialog();
-            Close();
-        }
-
-        private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == 0) {
-                cartItems.Add(productList[e.RowIndex]);
-
-                //foreach (InventoryItem item in cartItems) {
-                //    Debug.WriteLine(item);
-                //}
-
-                UpdateCartDGV(cartItems);
+            if (tbxItemSearch.Text == "") {
+                dgvItemSearch.DataSource = productList;
             }
-        }
+            else {
+                //make new list that is filtered
+                List<InventoryItem> filteredItems = new List<InventoryItem>();
 
-        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e) {
-            Debug.WriteLine("Cart cell clicked");
-
-            if (e.ColumnIndex == 3) {
-                Debug.WriteLine("button clicked");
-                cartItems.RemoveAt(e.RowIndex);
-
-                UpdateCartDGV(cartItems);
+                //loop through each item in product list
+                foreach (InventoryItem item in productList) {
+                    //test if item description contains search string
+                    if (item.description.Contains(tbxItemSearch.Text)) {
+                        filteredItems.Add(item);
+                    }
+                }
+                dgvItemSearch.DataSource = filteredItems;
 
             }
-        }
 
-        private void rbnSubmit_Click(object sender, EventArgs e) {
-            Hide();
-            ReviewOrder ro = new ReviewOrder(tbxAcctID.Text, tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
-            ro.ShowDialog();
-            //Close this form after order submission
         }
 
 
+
+        //**Structs**
         struct ProductTableEntry {
             public string productDesc { get; set; }
             public string brand { get; set; }

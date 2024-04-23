@@ -1,15 +1,17 @@
 ﻿namespace OGOMS_Sprint2 {
     public partial class ReviewOrder : Form {
 
+        //**Fields**
         string acctID;
         string salesID;
         string deliveryID;
         DateTime deliveryDate;
 
+        //**Constructors**
         public ReviewOrder() {
             InitializeComponent();
         }
-
+        //
         public ReviewOrder(string acctID, string salesID, string deliveryID, DateTime deliveryDate) {
 
             this.acctID = acctID;
@@ -20,13 +22,48 @@
             InitializeComponent();
         }
 
+        //**Event Handlers**
         private void btnHome_Click(object sender, EventArgs e) {
             Hide();
             Home home = new Home();
             home.ShowDialog();
             Close();
         }
+        //        
+        private void ReviewOrder_Load(object sender, EventArgs e) {
+            InitOrderInfoDGV(acctID, salesID, deliveryID, deliveryDate);
 
+            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
+
+            InitOrderCartDGV(cno.cartItems);
+
+        }
+        //
+        private void dgvOrderInfo_SelectionChanged(object sender, EventArgs e) {
+            dgvOrderInfo.ClearSelection();
+        }
+        //
+        private void dgvOrderCart_SelectionChanged(object sender, EventArgs e) {
+            dgvOrderCart.ClearSelection();
+        }
+        //
+        private void rbnBack_Click(object sender, EventArgs e) {
+            Hide();
+            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
+            cno.Show();
+            Close();
+        }
+        //
+        private void rbnSubmit_Click(object sender, EventArgs e) {
+            Hide();
+            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
+            cno.Close();
+            OrderSubmitted os = new OrderSubmitted();
+            os.ShowDialog();
+            Close();
+        }
+
+        //**Utility Methods**
         void InitOrderInfoDGV(string acctID, string salesID, string deliveryID, DateTime deliveryDate) {
 
 
@@ -53,7 +90,7 @@
             dgvOrderInfo.Rows.Add(row);
             dgvOrderInfo.AllowUserToAddRows = false;
         }
-
+        //
         void InitOrderCartDGV(List<InventoryItem> cartItems) {
 
             List<string[]> entries = new List<string[]>();
@@ -120,39 +157,7 @@
             dgvOrderCart.AllowUserToAddRows = false;
         }
 
-        private void ReviewOrder_Load(object sender, EventArgs e) {
-            InitOrderInfoDGV(acctID, salesID, deliveryID, deliveryDate);
-
-            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
-
-            InitOrderCartDGV(cno.cartItems);
-
-        }
-
-        private void dgvOrderInfo_SelectionChanged(object sender, EventArgs e) {
-            dgvOrderInfo.ClearSelection();
-        }
-
-        private void dgvOrderCart_SelectionChanged(object sender, EventArgs e) {
-            dgvOrderCart.ClearSelection();
-        }
-
-        private void rbnBack_Click(object sender, EventArgs e) {
-            Hide();
-            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
-            cno.Show();
-            Close();
-        }
-
-        private void rbnSubmit_Click(object sender, EventArgs e) {
-            Hide();
-            CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
-            cno.Close();
-            OrderSubmitted os = new OrderSubmitted();
-            os.ShowDialog();
-            Close();
-        }
-
+        //**Struct**
         struct OrderInfoEntry {
             public string acctID;
             public string salesID;

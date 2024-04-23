@@ -34,8 +34,8 @@
             // 
             // btn2FAContinue
             // 
-            btn2FAContinue.BackColor = Color.FromArgb(61, 128, 186);
-            btn2FAContinue.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            btn2FAContinue.BackColor = Color.FromArgb(  61,   128,   186);
+            btn2FAContinue.Font = new Font("Segoe UI", 9F,  FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point,  0);
             btn2FAContinue.ForeColor = Color.White;
             btn2FAContinue.Location = new Point(449, 310);
             btn2FAContinue.Name = "btn2FAContinue";
@@ -47,7 +47,7 @@
             // 
             // tbx2FA
             // 
-            tbx2FA.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbx2FA.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbx2FA.Location = new Point(370, 229);
             tbx2FA.MaxLength = 24;
             tbx2FA.Name = "tbx2FA";
@@ -57,8 +57,8 @@
             // lbl2FA
             // 
             lbl2FA.AutoSize = true;
-            lbl2FA.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl2FA.ForeColor = Color.FromArgb(18, 47, 94);
+            lbl2FA.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            lbl2FA.ForeColor = Color.FromArgb(  18,   47,   94);
             lbl2FA.Location = new Point(370, 196);
             lbl2FA.Name = "lbl2FA";
             lbl2FA.Size = new Size(106, 30);
@@ -68,8 +68,8 @@
             // lblLogin
             // 
             lblLogin.AutoSize = true;
-            lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogin.ForeColor = Color.FromArgb(18, 47, 94);
+            lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            lblLogin.ForeColor = Color.FromArgb(  18,   47,   94);
             lblLogin.Location = new Point(423, 71);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(138, 59);
@@ -80,7 +80,7 @@
             // 
             lblName_2FA.AutoSize = true;
             lblName_2FA.Dock = DockStyle.Left;
-            lblName_2FA.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName_2FA.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblName_2FA.ForeColor = Color.White;
             lblName_2FA.Location = new Point(0, 0);
             lblName_2FA.Name = "lblName_2FA";
@@ -91,7 +91,7 @@
             // 
             // pnlMenu_2FA
             // 
-            pnlMenu_2FA.BackColor = Color.FromArgb(47, 85, 151);
+            pnlMenu_2FA.BackColor = Color.FromArgb(  47,   85,   151);
             pnlMenu_2FA.Controls.Add(lblName_2FA);
             pnlMenu_2FA.Dock = DockStyle.Top;
             pnlMenu_2FA.Location = new Point(0, 0);
@@ -103,7 +103,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(222, 235, 247);
+            BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(984, 561);
             Controls.Add(pnlMenu_2FA);
             Controls.Add(btn2FAContinue);

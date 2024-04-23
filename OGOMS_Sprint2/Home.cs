@@ -4,19 +4,20 @@
             InitializeComponent();
         }
 
+        //**Event Handlers**
         private void rbnSubmitOrder_Click(object sender, EventArgs e) {
             Hide();
             CreateNewOrder cno = new CreateNewOrder();
             cno.ShowDialog();
             Close();
         }
-
+        //
         private void btnProfile_Click(object sender, EventArgs e) {
             //Testing sending a customer to profile constructor
             Profile profile = new Profile("Jacob Miller", "ItsMillerTyme", 12345, 1, "MyEmail@gmail.com");
-            profile.ShowDialog();
+            profile.Show();
         }
-
+        //
         private void rbnCustMng_Click(object sender, EventArgs e) {
 
             List<Customer> customers = new List<Customer> { new Customer("Buemi, Alease", "4 Webbs Chapel Rd", "12:00pm-4:00pm", 12345678, 12345),
