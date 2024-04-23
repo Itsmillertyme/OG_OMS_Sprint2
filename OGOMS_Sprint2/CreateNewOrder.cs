@@ -105,19 +105,43 @@ namespace OGOMS_Sprint2 {
 
         }
 
-        private void CreateNewOrder_Load(object sender, EventArgs e) {
-
-            productList = new List<InventoryItem> {
-                new InventoryItem(061010,197,0,"3D BLUE 12/16 CAN", "3D ENERGY", "3D ENERGY",17.99),
-                new InventoryItem(061014,138,0,"3D PURPLE 12/16 CAN", "3D ENERGY","3D ENERGY",27.99),
-                new InventoryItem(301995,208,0,"6/750  80 PROOF BLUELAVA TEQ", "80 PROOF IMPORTS", "80 PROOF IMPORTS",14.87),
-                new InventoryItem(060098,0,0,"AE WITCHSBREW 4/6C", "ALANI", "ALANI ENERGY",32.99),
-                new InventoryItem(060099,0,0,"AE KIMADE 4/6C", "ALANI","ALANI ENERGY",16.98),
-                new InventoryItem(061000,141,1,"AE BLUE SLUSH 4/6 CAN", "ALANI", "ALANI ENERGY",19.99)
-            };
-
-            //for testing, will load items from file
-            InitProductDGV(productList);
+        private void CreateNewOrder_Load(object sender, EventArgs e)
+        {
+            // Initialize productList
+            productList = new List<InventoryItem>();
+        
+            // Read data from the file and populate productList
+            string filePath = "MasterProductList.txt";
+            try
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        // Split the line by comma
+                        string[] data = line.Split(',');
+        
+                        // Extract required fields for creating InventoryItem
+                        int productId = int.Parse(data[1]);
+                        int onHand = int.Parse(data[11]);
+                        string itemDescription = data[2];
+                        string supplierName = data[3];
+                        string brandName = data[4];
+        
+                        // Create InventoryItem and add to productList
+                        productList.Add(new InventoryItem(productId, onHand, 0, itemDescription, supplierName, brandName, 0)); // Assuming 0 for price
+                    }
+                }
+        
+                // Initialize product DataGridView
+                InitProductDGV(productList);
+            }
+            catch (Exception ex)
+            {
+                // Handle exception, maybe show error message
+                MessageBox.Show("Error reading file: " + ex.Message);
+            }
         }
 
         private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
