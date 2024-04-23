@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             lblProfileName = new Label();
             pnlMenu_Home = new Panel();
+            btnBack = new Button();
             btnEdit = new Button();
             btnSignOut = new Button();
             flpUserName = new FlowLayoutPanel();
@@ -39,7 +40,6 @@
             flpEmail = new FlowLayoutPanel();
             lblEmail_Label = new Label();
             lblEmail_Display = new Label();
-            btnBack = new Button();
             pnlMenu_Home.SuspendLayout();
             flpUserName.SuspendLayout();
             flpSalesID.SuspendLayout();
@@ -71,6 +71,22 @@
             pnlMenu_Home.Name = "pnlMenu_Home";
             pnlMenu_Home.Size = new Size(484, 44);
             pnlMenu_Home.TabIndex = 4;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.Dock = DockStyle.Left;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(0, 0);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(55, 44);
+            btnBack.TabIndex = 6;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // btnEdit
             // 
@@ -234,22 +250,6 @@
             lblEmail_Display.TabIndex = 14;
             lblEmail_Display.Text = "Employee Email";
             // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.Transparent;
-            btnBack.Dock = DockStyle.Left;
-            btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(0, 0);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(55, 44);
-            btnBack.TabIndex = 6;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
-            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -265,7 +265,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Profile";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "User Profile";
             pnlMenu_Home.ResumeLayout(false);
             flpUserName.ResumeLayout(false);

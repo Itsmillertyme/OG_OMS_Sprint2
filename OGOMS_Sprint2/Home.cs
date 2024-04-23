@@ -14,7 +14,7 @@
         //
         private void btnProfile_Click(object sender, EventArgs e) {
             //Testing sending a customer to profile constructor
-            Profile profile = new Profile("Jacob Miller", "ItsMillerTyme", 12345, 1, "MyEmail@gmail.com");
+            Profile profile = new Profile(Program.ActiveEmployee);
             profile.Show();
         }
         //

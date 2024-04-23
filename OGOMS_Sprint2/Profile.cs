@@ -3,7 +3,7 @@
 
         string empName;
         string empUsername;
-        int empSalesID;
+        string empSalesID;
         int empSalesZone;
         string empEmail;
 
@@ -11,14 +11,14 @@
             InitializeComponent();
         }
 
-        public Profile(string empName, string empUsername, int empSalesID, int empSalesZone, string empEmail) {
+        public Profile(Employee loggedInEmp) {
 
             InitializeComponent();
-            this.empName = empName;
-            this.empUsername = empUsername;
-            this.empSalesID = empSalesID;
-            this.empSalesZone = empSalesZone;
-            this.empEmail = empEmail;
+            this.empName = loggedInEmp.FirstName + " " + loggedInEmp.LastName;
+            this.empUsername = loggedInEmp.Username;
+            this.empSalesID = loggedInEmp.SalesRepID;
+            this.empSalesZone = new Random().Next(1, 100);
+            this.empEmail = loggedInEmp.Email;
 
             UpdateLabels();
 
@@ -37,7 +37,7 @@
             for (int i = 0; i < Application.OpenForms.Count; i++) {
 
                 if (Application.OpenForms[i].Name != "Profile") {
-                    //Debug.WriteLine(Application.OpenForms[i]);
+                    Application.OpenForms[i].Close();
                     Application.OpenForms[i].Dispose();
                 }
             }
@@ -45,8 +45,11 @@
         }
         //
         private void btnBack_Click(object sender, EventArgs e) {
+
+            Hide();
             Home home = new Home();
             home.Show();
+            Close();
         }
 
         //**Utility Methods**
@@ -57,7 +60,5 @@
             lblSalesZone_Display.Text = empSalesZone.ToString();
             lblEmail_Display.Text = empEmail;
         }
-
-
     }
 }
