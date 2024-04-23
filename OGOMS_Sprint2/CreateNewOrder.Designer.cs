@@ -48,6 +48,7 @@
             lblDeliveryID = new Label();
             dtpDeliveryDate = new DateTimePicker();
             lblDeliveryDate = new Label();
+            tbxItemSearch = new TextBox();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) dgvItemSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize) dgvCart).BeginInit();
@@ -138,10 +139,10 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvItemSearch.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvItemSearch.Location = new Point(95, 121);
+            dgvItemSearch.Location = new Point(12, 121);
             dgvItemSearch.Name = "dgvItemSearch";
             dgvItemSearch.RowHeadersVisible = false;
-            dgvItemSearch.Size = new Size(347, 130);
+            dgvItemSearch.Size = new Size(500, 130);
             dgvItemSearch.TabIndex = 7;
             dgvItemSearch.CellClick += dgvItemSearch_CellClick;
             dgvItemSearch.SelectionChanged += dgvItemSearch_SelectionChanged;
@@ -151,11 +152,11 @@
             lblItemSearch.AutoSize = true;
             lblItemSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblItemSearch.ForeColor = Color.FromArgb(  18,   47,   94);
-            lblItemSearch.Location = new Point(95, 97);
+            lblItemSearch.Location = new Point(12, 94);
             lblItemSearch.Name = "lblItemSearch";
-            lblItemSearch.Size = new Size(100, 21);
+            lblItemSearch.Size = new Size(104, 21);
             lblItemSearch.TabIndex = 8;
-            lblItemSearch.Text = "Item Search";
+            lblItemSearch.Text = "Item Search:";
             // 
             // dgvCart
             // 
@@ -304,12 +305,23 @@
             lblDeliveryDate.TabIndex = 34;
             lblDeliveryDate.Text = "Delivery Date";
             // 
+            // tbxItemSearch
+            // 
+            tbxItemSearch.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point,  0);
+            tbxItemSearch.Location = new Point(112, 94);
+            tbxItemSearch.MaxLength = 55;
+            tbxItemSearch.Name = "tbxItemSearch";
+            tbxItemSearch.Size = new Size(241, 25);
+            tbxItemSearch.TabIndex = 35;
+            tbxItemSearch.TextChanged += tbxItemSearch_TextChanged;
+            // 
             // CreateNewOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(984, 561);
+            Controls.Add(tbxItemSearch);
             Controls.Add(lblDeliveryDate);
             Controls.Add(dtpDeliveryDate);
             Controls.Add(tbxDeliveryID);
@@ -361,5 +373,6 @@
         private Label lblDeliveryID;
         private DateTimePicker dtpDeliveryDate;
         private Label lblDeliveryDate;
+        private TextBox tbxItemSearch;
     }
 }

@@ -72,6 +72,7 @@
             btnHome.Size = new Size(44, 44);
             btnHome.TabIndex = 0;
             btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
             // 
             // btnProfile
             // 
@@ -87,6 +88,7 @@
             btnProfile.Size = new Size(44, 44);
             btnProfile.TabIndex = 1;
             btnProfile.UseVisualStyleBackColor = false;
+            btnProfile.Click += btnProfile_Click;
             // 
             // btnHomeBig
             // 

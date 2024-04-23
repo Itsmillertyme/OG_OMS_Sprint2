@@ -3,6 +3,7 @@
 namespace OGOMS_Sprint2 {
     public partial class CreateNewOrder : Form {
 
+        //**Fields**
         public List<InventoryItem> cartItems { get; } = new List<InventoryItem>();
         List<InventoryItem> productList = new List<InventoryItem>();
 
@@ -10,11 +11,109 @@ namespace OGOMS_Sprint2 {
             InitializeComponent();
         }
 
+        //**Event Handlers*
+        private void CreateNewOrder_Load(object sender, EventArgs e)
+        {
+            // Initialize productList
+            productList = new List<InventoryItem>();
+        
+            // Read data from the file and populate productList
+            string filePath = "MasterProductList.txt";
+            try
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        // Split the line by comma
+                        string[] data = line.Split(',');
+        
+                        // Extract required fields for creating InventoryItem
+                        int productId = int.Parse(data[1]);
+                        int onHand = int.Parse(data[11]);
+                        string itemDescription = data[2];
+                        string supplierName = data[3];
+                        string brandName = data[4];
+        
+                        // Create InventoryItem and add to productList
+                        productList.Add(new InventoryItem(productId, onHand, 0, itemDescription, supplierName, brandName, 0)); // Assuming 0 for price
+                    }
+                }
+        
+                // Initialize product DataGridView
+                InitProductDGV(productList);
+            }
+            catch (Exception ex)
+            {
+                // Handle exception, maybe show error message
+                MessageBox.Show("Error reading file: " + ex.Message);
+            }
+        }
+        //
+        private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
+
+            dgvItemSearch.ClearSelection();
+
+        }
+        //
+        private void dgvCart_SelectionChanged(object sender, EventArgs e) {
+            dgvCart.ClearSelection();
+        }
+        //
+        private void btnHome_Click(object sender, EventArgs e) {
+            Hide();
+            Home home = new Home();
+            home.ShowDialog();
+            Close();
+
+        }
+        //
+        private void btnProfile_Click(object sender, EventArgs e) {
+            Hide();
+            Profile profile = new Profile();
+            profile.ShowDialog();
+            Close();
+        }
+        //
+        private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex == 0) {
+                cartItems.Add(productList[e.RowIndex]);
+
+                //foreach (InventoryItem item in cartItems) {
+                //    Debug.WriteLine(item);
+                //}
+
+                UpdateCartDGV(cartItems);
+            }
+        }
+        //
+        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e) {
+            Debug.WriteLine("Cart cell clicked");
+
+            if (e.ColumnIndex == 3) {
+                Debug.WriteLine("button clicked");
+                cartItems.RemoveAt(e.RowIndex);
+
+                UpdateCartDGV(cartItems);
+
+            }
+        }
+        //
+        private void rbnSubmit_Click(object sender, EventArgs e) {
+            Hide();
+            ReviewOrder ro = new ReviewOrder(tbxAcctID.Text, tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
+            ro.ShowDialog();
+            Close();
+            //Close this form after order submission
+        }
+
+        //**Utility Methods**
         void InitProductDGV(List<InventoryItem> items) {
             List<ProductTableEntry> entries = new List<ProductTableEntry>();
 
             foreach (InventoryItem item in items) {
-                entries.Add(new ProductTableEntry(item.description, item.supplierName, item.productID));
+                entries.Add(new ProductTableEntry(item.description, item.brandName, item.productID));
             }
 
             dgvItemSearch.DataSource = entries;
@@ -105,102 +204,31 @@ namespace OGOMS_Sprint2 {
 
         }
 
-        private void CreateNewOrder_Load(object sender, EventArgs e)
-        {
-            // Initialize productList
-            productList = new List<InventoryItem>();
-        
-            // Read data from the file and populate productList
-            string filePath = "MasterProductList.txt";
-            try
-            {
-                using (StreamReader sr = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        // Split the line by comma
-                        string[] data = line.Split(',');
-        
-                        // Extract required fields for creating InventoryItem
-                        int productId = int.Parse(data[1]);
-                        int onHand = int.Parse(data[11]);
-                        string itemDescription = data[2];
-                        string supplierName = data[3];
-                        string brandName = data[4];
-        
-                        // Create InventoryItem and add to productList
-                        productList.Add(new InventoryItem(productId, onHand, 0, itemDescription, supplierName, brandName, 0)); // Assuming 0 for price
+        private void tbxItemSearch_TextChanged(object sender, EventArgs e) {
+
+            if (tbxItemSearch.Text == "") {
+                dgvItemSearch.DataSource = productList;
+            }
+            else {
+                //make new list that is filtered
+                List<InventoryItem> filteredItems = new List<InventoryItem>();
+
+                //loop through each item in product list
+                foreach (InventoryItem item in productList) {
+                    //test if item description contains search string
+                    if (item.description.Contains(tbxItemSearch.Text)) {
+                        filteredItems.Add(item);
                     }
                 }
-        
-                // Initialize product DataGridView
-                InitProductDGV(productList);
-            }
-            catch (Exception ex)
-            {
-                // Handle exception, maybe show error message
-                MessageBox.Show("Error reading file: " + ex.Message);
-            }
-        }
-
-        private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
-
-            dgvItemSearch.ClearSelection();
-
-        }
-
-        private void dgvCart_SelectionChanged(object sender, EventArgs e) {
-            dgvCart.ClearSelection();
-        }
-
-
-        private void btnHome_Click(object sender, EventArgs e) {
-            Hide();
-            Home home = new Home();
-            home.ShowDialog();
-            Close();
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e) {
-            Hide();
-            Profile profile = new Profile();
-            profile.ShowDialog();
-            Close();
-        }
-
-        private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == 0) {
-                cartItems.Add(productList[e.RowIndex]);
-
-                //foreach (InventoryItem item in cartItems) {
-                //    Debug.WriteLine(item);
-                //}
-
-                UpdateCartDGV(cartItems);
-            }
-        }
-
-        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e) {
-            Debug.WriteLine("Cart cell clicked");
-
-            if (e.ColumnIndex == 3) {
-                Debug.WriteLine("button clicked");
-                cartItems.RemoveAt(e.RowIndex);
-
-                UpdateCartDGV(cartItems);
+                dgvItemSearch.DataSource = filteredItems;
 
             }
-        }
 
-        private void rbnSubmit_Click(object sender, EventArgs e) {
-            Hide();
-            ReviewOrder ro = new ReviewOrder(tbxAcctID.Text, tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
-            ro.ShowDialog();
-            //Close this form after order submission
         }
 
 
+
+        //**Structs**
         struct ProductTableEntry {
             public string productDesc { get; set; }
             public string brand { get; set; }

@@ -24,6 +24,7 @@
 
         }
 
+        //**Event Handlers**
         private void btnSignOut_Click(object sender, EventArgs e) {
             //hide profile form
             Hide();
@@ -41,9 +42,14 @@
                 }
             }
 
-            Close();
+        }
+        //
+        private void btnBack_Click(object sender, EventArgs e) {
+            Home home = new Home();
+            home.Show();
         }
 
+        //**Utility Methods**
         private void UpdateLabels() {
             lblProfileName.Text = empName;
             lblUsername_Display.Text = empUsername;
@@ -51,5 +57,7 @@
             lblSalesZone_Display.Text = empSalesZone.ToString();
             lblEmail_Display.Text = empEmail;
         }
+
+
     }
 }

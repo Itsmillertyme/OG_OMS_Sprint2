@@ -44,6 +44,7 @@
             tbxPOCPhone = new TextBox();
             lblPOCPhone = new Label();
             rbnAddCust = new CustomControls.RoundedButton();
+            btnBack = new Button();
             pnlMenu_AaddCust.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             // pnlMenu_AaddCust
             // 
             pnlMenu_AaddCust.BackColor = Color.FromArgb(  47,   85,   151);
+            pnlMenu_AaddCust.Controls.Add(btnBack);
             pnlMenu_AaddCust.Controls.Add(lblAddCust);
             pnlMenu_AaddCust.Dock = DockStyle.Top;
             pnlMenu_AaddCust.Location = new Point(0, 0);
@@ -266,6 +268,22 @@
             rbnAddCust.UseVisualStyleBackColor = false;
             rbnAddCust.Click += rbnAddCust_Click;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.Dock = DockStyle.Left;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(0, 0);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(55, 44);
+            btnBack.TabIndex = 7;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // AddCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -324,5 +342,6 @@
         private TextBox tbxPOCPhone;
         private Label lblPOCPhone;
         private CustomControls.RoundedButton rbnAddCust;
+        private Button btnBack;
     }
 }

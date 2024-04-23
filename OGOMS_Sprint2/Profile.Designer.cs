@@ -39,6 +39,7 @@
             flpEmail = new FlowLayoutPanel();
             lblEmail_Label = new Label();
             lblEmail_Display = new Label();
+            btnBack = new Button();
             pnlMenu_Home.SuspendLayout();
             flpUserName.SuspendLayout();
             flpSalesID.SuspendLayout();
@@ -62,6 +63,7 @@
             // pnlMenu_Home
             // 
             pnlMenu_Home.BackColor = Color.FromArgb(  47,   85,   151);
+            pnlMenu_Home.Controls.Add(btnBack);
             pnlMenu_Home.Controls.Add(btnEdit);
             pnlMenu_Home.Controls.Add(lblProfileName);
             pnlMenu_Home.Dock = DockStyle.Top;
@@ -73,13 +75,14 @@
             // btnEdit
             // 
             btnEdit.BackColor = Color.Transparent;
+            btnEdit.Dock = DockStyle.Right;
             btnEdit.FlatAppearance.BorderSize = 0;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
             btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(12, 11);
+            btnEdit.Location = new Point(436, 0);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(48, 28);
+            btnEdit.Size = new Size(48, 44);
             btnEdit.TabIndex = 5;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = false;
@@ -231,6 +234,22 @@
             lblEmail_Display.TabIndex = 14;
             lblEmail_Display.Text = "Employee Email";
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.Dock = DockStyle.Left;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(0, 0);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(55, 44);
+            btnBack.TabIndex = 6;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -279,5 +298,6 @@
         private Label lblEmail_Display;
         private FlowLayoutPanel flpUserName;
         private Label label3;
+        private Button btnBack;
     }
 }
