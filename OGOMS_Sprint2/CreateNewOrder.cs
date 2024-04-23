@@ -5,7 +5,8 @@ namespace OGOMS_Sprint2 {
 
         //**Fields**
         public List<InventoryItem> cartItems { get; } = new List<InventoryItem>();
-        List<InventoryItem> productList = new List<InventoryItem>();
+        List<InventoryItem> fullProductList = new List<InventoryItem>();
+        List<InventoryItem> currentProductList = new List<InventoryItem>();
 
         public CreateNewOrder() {
             InitializeComponent();
@@ -13,22 +14,39 @@ namespace OGOMS_Sprint2 {
 
         //**Event Handlers*
         private void CreateNewOrder_Load(object sender, EventArgs e) {
+            // Initialize productList
+            fullProductList = new List<InventoryItem>();
 
-            //TESTING DATA
-            //productList = new List<InventoryItem> {
-            //    new InventoryItem(061010,197,0,"3D BLUE 12/16 CAN", "3D ENERGY", "3D ENERGY"),
-            //    new InventoryItem(061014,138,0,"3D PURPLE 12/16 CAN", "3D ENERGY","3D ENERGY"),
-            //    new InventoryItem(301995,208,0,"6/750  80 PROOF BLUELAVA TEQ", "80 PROOF IMPORTS", "80 PROOF IMPORTS"),
-            //    new InventoryItem(060098,0,0,"AE WITCHSBREW 4/6C", "ALANI", "ALANI ENERGY"),
-            //    new InventoryItem(060099,0,0,"AE KIMADE 4/6C", "ALANI","ALANI ENERGY"),
-            //    new InventoryItem(061000,141,1,"AE BLUE SLUSH 4/6 CAN", "ALANI", "ALANI ENERGY")
-            //};
+            // Read data from the file and populate productList
+            string filePath = "MasterProductList.txt";
+            try {
+                using (StreamReader sr = new StreamReader(filePath)) {
+                    string line;
+                    while ((line = sr.ReadLine()) != null) {
+                        // Split the line by comma
+                        string[] data = line.Split(',');
 
-            //Create product reader
-            ProductReader reader = new ProductReader();
-            productList = reader.GetInventory();
+                        // Extract required fields for creating InventoryItem
+                        int productId = int.Parse(data[1]);
+                        int onHand = int.Parse(data[11]);
+                        string itemDescription = data[2];
+                        string supplierName = data[3];
+                        string brandName = data[4];
 
-            InitProductDGV(productList);
+                        // Create InventoryItem and add to productList
+                        fullProductList.Add(new InventoryItem(productId, onHand, 0, itemDescription, supplierName, brandName));
+                    }
+                }
+
+                currentProductList = fullProductList;
+
+                // Initialize product DataGridView
+                UpdateProductDGV(currentProductList);
+            }
+            catch (Exception ex) {
+                // Handle exception, maybe show error message
+                MessageBox.Show("Error reading file: " + ex.Message);
+            }
         }
         //
         private void dgvItemSearch_SelectionChanged(object sender, EventArgs e) {
@@ -58,7 +76,7 @@ namespace OGOMS_Sprint2 {
         //
         private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (e.ColumnIndex == 0) {
-                cartItems.Add(productList[e.RowIndex]);
+                cartItems.Add(currentProductList[e.RowIndex]);
 
                 //foreach (InventoryItem item in cartItems) {
                 //    Debug.WriteLine(item);
@@ -87,9 +105,44 @@ namespace OGOMS_Sprint2 {
             Close();
             //Close this form after order submission
         }
+        //
+        private void tbxItemSearch_TextChanged(object sender, EventArgs e) {
+
+            if (tbxItemSearch.Text == "") {
+                currentProductList = fullProductList;
+
+                UpdateProductDGV(currentProductList);
+            }
+            else {
+                //make new list that is filtered
+                List<InventoryItem> filteredItems = new List<InventoryItem>();
+
+                //loop through each item in product list
+                foreach (InventoryItem item in fullProductList) {
+                    //test if item description contains search string
+                    Debug.WriteLine("testing: " + item.description + ", against " + tbxItemSearch.Text);
+
+                    //Debug.WriteLine();
+                    if (item.description.Contains(tbxItemSearch.Text.ToUpper())) {
+                        Debug.WriteLine("item desc contains: " + tbxItemSearch.Text);
+                        filteredItems.Add(item);
+                    }
+                }
+
+                currentProductList = filteredItems;
+                UpdateProductDGV(currentProductList);
+
+            }
+
+        }
 
         //**Utility Methods**
-        void InitProductDGV(List<InventoryItem> items) {
+        void UpdateProductDGV(List<InventoryItem> items) {
+            dgvItemSearch.DataSource = null;
+            dgvItemSearch.Columns.Clear();
+            dgvItemSearch.Rows.Clear();
+            dgvItemSearch.Refresh();
+
             List<ProductTableEntry> entries = new List<ProductTableEntry>();
 
             foreach (InventoryItem item in items) {
@@ -184,27 +237,6 @@ namespace OGOMS_Sprint2 {
 
         }
 
-        private void tbxItemSearch_TextChanged(object sender, EventArgs e) {
-
-            if (tbxItemSearch.Text == "") {
-                dgvItemSearch.DataSource = productList;
-            }
-            else {
-                //make new list that is filtered
-                List<InventoryItem> filteredItems = new List<InventoryItem>();
-
-                //loop through each item in product list
-                foreach (InventoryItem item in productList) {
-                    //test if item description contains search string
-                    if (item.description.Contains(tbxItemSearch.Text)) {
-                        filteredItems.Add(item);
-                    }
-                }
-                dgvItemSearch.DataSource = filteredItems;
-
-            }
-
-        }
 
 
 
