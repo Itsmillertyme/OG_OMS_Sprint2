@@ -185,6 +185,7 @@
             Name = "CustomerManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";
+            Load += CustomerManagement_Load;
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) dgvCustomerManagement).EndInit();

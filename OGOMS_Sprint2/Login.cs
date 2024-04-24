@@ -2,7 +2,7 @@
     public partial class Login : Form {
 
         //**Variables**
-        string filePath = "EmployeeData.txt";
+        string filePath = "MasterEmployeeList.txt";
         List<Employee> employees = new List<Employee>();
 
         //**Constructors**

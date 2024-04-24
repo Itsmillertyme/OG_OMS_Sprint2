@@ -38,8 +38,8 @@
             // lblLogin
             // 
             lblLogin.AutoSize = true;
-            lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogin.ForeColor = Color.FromArgb(18, 47, 94);
+            lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            lblLogin.ForeColor = Color.FromArgb(  18,   47,   94);
             lblLogin.Location = new Point(423, 71);
             lblLogin.Name = "lblLogin";
             lblLogin.Size = new Size(138, 59);
@@ -49,8 +49,8 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsername.ForeColor = Color.FromArgb(18, 47, 94);
+            lblUsername.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            lblUsername.ForeColor = Color.FromArgb(  18,   47,   94);
             lblUsername.Location = new Point(370, 172);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(110, 30);
@@ -60,8 +60,8 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPassword.ForeColor = Color.FromArgb(18, 47, 94);
+            lblPassword.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            lblPassword.ForeColor = Color.FromArgb(  18,   47,   94);
             lblPassword.Location = new Point(370, 251);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(105, 30);
@@ -70,7 +70,7 @@
             // 
             // tbxUserName
             // 
-            tbxUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxUserName.Location = new Point(370, 205);
             tbxUserName.MaxLength = 24;
             tbxUserName.Name = "tbxUserName";
@@ -79,7 +79,7 @@
             // 
             // tbxPassword
             // 
-            tbxPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxPassword.Location = new Point(370, 284);
             tbxPassword.MaxLength = 24;
             tbxPassword.Name = "tbxPassword";
@@ -89,8 +89,8 @@
             // 
             // btnLoginContinue
             // 
-            btnLoginContinue.BackColor = Color.FromArgb(61, 128, 186);
-            btnLoginContinue.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            btnLoginContinue.BackColor = Color.FromArgb(  61,   128,   186);
+            btnLoginContinue.Font = new Font("Segoe UI", 9F,  FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point,  0);
             btnLoginContinue.ForeColor = Color.White;
             btnLoginContinue.Location = new Point(449, 344);
             btnLoginContinue.Name = "btnLoginContinue";
@@ -104,7 +104,7 @@
             // 
             lblName_Login.AutoSize = true;
             lblName_Login.Dock = DockStyle.Left;
-            lblName_Login.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName_Login.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblName_Login.ForeColor = Color.White;
             lblName_Login.Location = new Point(0, 0);
             lblName_Login.Name = "lblName_Login";
@@ -115,7 +115,7 @@
             // 
             // pnlMenu_Login
             // 
-            pnlMenu_Login.BackColor = Color.FromArgb(47, 85, 151);
+            pnlMenu_Login.BackColor = Color.FromArgb(  47,   85,   151);
             pnlMenu_Login.Controls.Add(lblName_Login);
             pnlMenu_Login.Dock = DockStyle.Top;
             pnlMenu_Login.Location = new Point(0, 0);
@@ -126,7 +126,7 @@
             // lblError
             // 
             lblError.AutoSize = true;
-            lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblError.ForeColor = Color.Red;
             lblError.Location = new Point(335, 407);
             lblError.Name = "lblError";
@@ -138,7 +138,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(222, 235, 247);
+            BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(984, 561);
             Controls.Add(lblError);
             Controls.Add(pnlMenu_Login);

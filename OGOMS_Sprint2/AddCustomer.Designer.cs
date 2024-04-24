@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             lblAddCust = new Label();
             pnlMenu_AaddCust = new Panel();
+            btnBack = new Button();
             tbxCustName = new TextBox();
             lblCustName = new Label();
             tbxCustStreet = new TextBox();
@@ -39,12 +40,13 @@
             lblPOCEmail = new Label();
             tbxDeliveryPOCName = new TextBox();
             lblDeliveryPOCName = new Label();
-            tbxDeliveryHours = new TextBox();
             lblDeliveryHours = new Label();
             tbxPOCPhone = new TextBox();
             lblPOCPhone = new Label();
             rbnAddCust = new CustomControls.RoundedButton();
-            btnBack = new Button();
+            dtpDeliveryStart = new DateTimePicker();
+            label1 = new Label();
+            dtpDeliveryEnd = new DateTimePicker();
             pnlMenu_AaddCust.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,6 +73,22 @@
             pnlMenu_AaddCust.Name = "pnlMenu_AaddCust";
             pnlMenu_AaddCust.Size = new Size(534, 44);
             pnlMenu_AaddCust.TabIndex = 5;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.Dock = DockStyle.Left;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(0, 0);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(55, 44);
+            btnBack.TabIndex = 7;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // tbxCustName
             // 
@@ -212,16 +230,6 @@
             lblDeliveryPOCName.TabIndex = 16;
             lblDeliveryPOCName.Text = "Delivery POC Name";
             // 
-            // tbxDeliveryHours
-            // 
-            tbxDeliveryHours.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
-            tbxDeliveryHours.Location = new Point(277, 340);
-            tbxDeliveryHours.MaxLength = 55;
-            tbxDeliveryHours.Name = "tbxDeliveryHours";
-            tbxDeliveryHours.PlaceholderText = "HH:MM-HH:MM";
-            tbxDeliveryHours.Size = new Size(245, 29);
-            tbxDeliveryHours.TabIndex = 23;
-            // 
             // lblDeliveryHours
             // 
             lblDeliveryHours.AutoSize = true;
@@ -268,21 +276,42 @@
             rbnAddCust.UseVisualStyleBackColor = false;
             rbnAddCust.Click += rbnAddCust_Click;
             // 
-            // btnBack
+            // dtpDeliveryStart
             // 
-            btnBack.BackColor = Color.Transparent;
-            btnBack.Dock = DockStyle.Left;
-            btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(0, 0);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(55, 44);
-            btnBack.TabIndex = 7;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
+            dtpDeliveryStart.CustomFormat = "      HH:mm";
+            dtpDeliveryStart.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            dtpDeliveryStart.Format = DateTimePickerFormat.Custom;
+            dtpDeliveryStart.Location = new Point(275, 340);
+            dtpDeliveryStart.MinimumSize = new Size(0, 29);
+            dtpDeliveryStart.Name = "dtpDeliveryStart";
+            dtpDeliveryStart.ShowUpDown = true;
+            dtpDeliveryStart.Size = new Size(107, 29);
+            dtpDeliveryStart.TabIndex = 25;
+            dtpDeliveryStart.Value = new DateTime(2024, 4, 24, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            label1.ForeColor = Color.FromArgb(  18,   47,   94);
+            label1.Location = new Point(388, 337);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 30);
+            label1.TabIndex = 26;
+            label1.Text = "-";
+            // 
+            // dtpDeliveryEnd
+            // 
+            dtpDeliveryEnd.CustomFormat = "      HH:mm";
+            dtpDeliveryEnd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            dtpDeliveryEnd.Format = DateTimePickerFormat.Custom;
+            dtpDeliveryEnd.Location = new Point(413, 340);
+            dtpDeliveryEnd.MinimumSize = new Size(0, 29);
+            dtpDeliveryEnd.Name = "dtpDeliveryEnd";
+            dtpDeliveryEnd.ShowUpDown = true;
+            dtpDeliveryEnd.Size = new Size(107, 29);
+            dtpDeliveryEnd.TabIndex = 27;
+            dtpDeliveryEnd.Value = new DateTime(2024, 4, 24, 0, 0, 0, 0);
             // 
             // AddCustomer
             // 
@@ -290,8 +319,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(534, 447);
+            Controls.Add(dtpDeliveryEnd);
+            Controls.Add(label1);
+            Controls.Add(dtpDeliveryStart);
             Controls.Add(rbnAddCust);
-            Controls.Add(tbxDeliveryHours);
             Controls.Add(lblDeliveryHours);
             Controls.Add(tbxPOCPhone);
             Controls.Add(lblPOCPhone);
@@ -337,11 +368,13 @@
         private Label lblPOCEmail;
         private TextBox tbxDeliveryPOCName;
         private Label lblDeliveryPOCName;
-        private TextBox tbxDeliveryHours;
         private Label lblDeliveryHours;
         private TextBox tbxPOCPhone;
         private Label lblPOCPhone;
         private CustomControls.RoundedButton rbnAddCust;
         private Button btnBack;
+        private DateTimePicker dtpDeliveryStart;
+        private Label label1;
+        private DateTimePicker dtpDeliveryEnd;
     }
 }

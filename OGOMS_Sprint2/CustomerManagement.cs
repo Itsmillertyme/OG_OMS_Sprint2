@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-
-namespace OGOMS_Sprint2 {
+﻿namespace OGOMS_Sprint2 {
     public partial class CustomerManagement : Form {
 
         //**Fields**
         List<Customer> customers;
+        string filePath;
 
         //**Contructors**
         public CustomerManagement() {
@@ -14,7 +13,6 @@ namespace OGOMS_Sprint2 {
         //
         public CustomerManagement(List<Customer> customers) : this() {
             this.customers = customers;
-            Debug.WriteLine(customers);
             SetDGVFromList(customers);
 
         }
@@ -36,12 +34,21 @@ namespace OGOMS_Sprint2 {
         private void dgvCustomerManagement_SelectionChanged(object sender, EventArgs e) {
             dgvCustomerManagement.ClearSelection();
         }
+        //
+        private void CustomerManagement_Load(object sender, EventArgs e) {
+
+            string filePath = "MasterCustomerList.txt";
+
+            customers = ReadCustomersFromFile(filePath);
+
+            SetDGVFromList(customers);
+        }
 
         //**Utility Methods**
-        void SetDGVFromList(List<Customer> customers) {
+        private void SetDGVFromList(List<Customer> customers) {
             List<TableEntry> entries = new List<TableEntry>();
             foreach (Customer customer in customers) {
-                entries.Add(new TableEntry(customer.name, customer.deliveryAddress, customer.custID));
+                entries.Add(new TableEntry(customer.Name, customer.DeliveryAddress, customer.CustID));
             }
             dgvCustomerManagement.DataSource = entries;
 
@@ -65,6 +72,37 @@ namespace OGOMS_Sprint2 {
             col.Width = 70;
 
         }
+        //
+        private List<Customer> ReadCustomersFromFile(string filePath) {
+
+            List<Customer> customers = new List<Customer>();
+            try {
+                using (StreamReader sr = new StreamReader(filePath)) {
+                    string line;
+                    while ((line = sr.ReadLine()) != null) {
+                        // Split the line by comma
+                        string[] data = line.Split(',');
+
+                        // Extract fields for creating Customer
+                        string fullName = data[0] + ", " + data[1];
+                        string address = data[2] + ", " + data[3] + ", " + data[4];
+                        string preferredDeliveryHours = data[5];
+                        int customerId = int.Parse(data[6]);
+                        string salesRepId = data[7];
+
+                        // Create Customer and add to customers list
+                        customers.Add(new Customer(fullName, address, preferredDeliveryHours, customerId, salesRepId));
+                    }
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
+            return customers;
+
+        }
+
 
         //**Struct**
         struct TableEntry {
