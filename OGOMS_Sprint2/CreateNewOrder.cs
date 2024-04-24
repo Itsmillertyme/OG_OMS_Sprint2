@@ -8,14 +8,29 @@ namespace OGOMS_Sprint2 {
         List<InventoryItem> fullProductList = new List<InventoryItem>();
         List<InventoryItem> currentProductList = new List<InventoryItem>();
 
+        List<Customer> customerList = new List<Customer>();
+
         public CreateNewOrder() {
             InitializeComponent();
         }
 
         //**Event Handlers*
         private void CreateNewOrder_Load(object sender, EventArgs e) {
+
             // Initialize productList
             fullProductList = new List<InventoryItem>();
+
+            //Initialize customers for employee
+            customerList = CustomerManagement.GetEmployeeCustomers(Program.ActiveEmployee.SalesRepID);
+
+            // Initialize some form controls
+            tbxSalesID.Text = Program.ActiveEmployee.SalesRepID;
+            tbxDeliveryID.Text = "JohnsonT_223451"; //hardcoded for prototype  
+            Debug.WriteLine(customerList.Count);
+            foreach (Customer customer in customerList) {
+                cbxCustAccounts.Items.Add(customer.Name + "; " + customer.CustID);
+            }
+
 
             // Read data from the file and populate productList
             string filePath = "MasterProductList.txt";
@@ -99,8 +114,14 @@ namespace OGOMS_Sprint2 {
         }
         //
         private void rbnSubmit_Click(object sender, EventArgs e) {
+
+            //ensure customer account is selected
+            if (cbxCustAccounts.SelectedIndex == -1) {
+                return;
+            }
+
             Hide();
-            ReviewOrder ro = new ReviewOrder(tbxAcctID.Text, tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
+            ReviewOrder ro = new ReviewOrder(customerList[cbxCustAccounts.SelectedIndex].CustID.ToString(), tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
             ro.ShowDialog();
             Close();
             //Close this form after order submission
@@ -172,7 +193,7 @@ namespace OGOMS_Sprint2 {
             col.Width = 70;
 
         }
-
+        //
         void UpdateCartDGV(List<InventoryItem> cartItems) {
 
             dgvCart.DataSource = null;
@@ -236,8 +257,6 @@ namespace OGOMS_Sprint2 {
 
 
         }
-
-
 
 
         //**Structs**

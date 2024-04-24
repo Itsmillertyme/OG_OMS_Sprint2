@@ -37,6 +37,7 @@
             // 
             // lblLogin
             // 
+            lblLogin.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblLogin.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -48,6 +49,7 @@
             // 
             // lblUsername
             // 
+            lblUsername.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             lblUsername.AutoSize = true;
             lblUsername.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblUsername.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -59,6 +61,7 @@
             // 
             // lblPassword
             // 
+            lblPassword.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblPassword.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -70,6 +73,7 @@
             // 
             // tbxUserName
             // 
+            tbxUserName.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             tbxUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxUserName.Location = new Point(370, 205);
             tbxUserName.MaxLength = 24;
@@ -79,6 +83,7 @@
             // 
             // tbxPassword
             // 
+            tbxPassword.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             tbxPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxPassword.Location = new Point(370, 284);
             tbxPassword.MaxLength = 24;
@@ -89,6 +94,7 @@
             // 
             // btnLoginContinue
             // 
+            btnLoginContinue.Anchor = AnchorStyles.Top;
             btnLoginContinue.BackColor = Color.FromArgb(  61,   128,   186);
             btnLoginContinue.Font = new Font("Segoe UI", 9F,  FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point,  0);
             btnLoginContinue.ForeColor = Color.White;
@@ -125,6 +131,7 @@
             // 
             // lblError
             // 
+            lblError.Anchor = AnchorStyles.Bottom;
             lblError.AutoSize = true;
             lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblError.ForeColor = Color.Red;
@@ -148,7 +155,6 @@
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
             Controls.Add(lblLogin);
-            MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

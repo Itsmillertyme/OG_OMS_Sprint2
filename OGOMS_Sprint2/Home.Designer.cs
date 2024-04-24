@@ -182,7 +182,6 @@
             Controls.Add(lblSubmitOrder);
             Controls.Add(rbnSubmitOrder);
             Controls.Add(pnlMenu_Home);
-            MaximizeBox = false;
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

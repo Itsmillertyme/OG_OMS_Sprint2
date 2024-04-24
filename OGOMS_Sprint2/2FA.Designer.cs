@@ -34,6 +34,7 @@
             // 
             // btn2FAContinue
             // 
+            btn2FAContinue.Anchor = AnchorStyles.Top;
             btn2FAContinue.BackColor = Color.FromArgb(  61,   128,   186);
             btn2FAContinue.Font = new Font("Segoe UI", 9F,  FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point,  0);
             btn2FAContinue.ForeColor = Color.White;
@@ -47,6 +48,7 @@
             // 
             // tbx2FA
             // 
+            tbx2FA.Anchor = AnchorStyles.Top;
             tbx2FA.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbx2FA.Location = new Point(370, 229);
             tbx2FA.MaxLength = 24;
@@ -56,6 +58,7 @@
             // 
             // lbl2FA
             // 
+            lbl2FA.Anchor = AnchorStyles.Top;
             lbl2FA.AutoSize = true;
             lbl2FA.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lbl2FA.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -67,6 +70,7 @@
             // 
             // lblLogin
             // 
+            lblLogin.Anchor = AnchorStyles.Top;
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblLogin.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -110,7 +114,6 @@
             Controls.Add(tbx2FA);
             Controls.Add(lbl2FA);
             Controls.Add(lblLogin);
-            MaximizeBox = false;
             Name = "_2FA";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

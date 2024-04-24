@@ -92,6 +92,7 @@
             // 
             // btnHomeBig
             // 
+            btnHomeBig.Anchor = AnchorStyles.Top;
             btnHomeBig.BackColor = Color.Transparent;
             btnHomeBig.BackgroundImage = (Image) resources.GetObject("btnHomeBig.BackgroundImage");
             btnHomeBig.BackgroundImageLayout = ImageLayout.Stretch;
@@ -108,6 +109,7 @@
             // 
             // lblSubmittalText
             // 
+            lblSubmittalText.Anchor = AnchorStyles.Top;
             lblSubmittalText.AutoSize = true;
             lblSubmittalText.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblSubmittalText.ForeColor = Color.FromArgb(  18,   47,   94);

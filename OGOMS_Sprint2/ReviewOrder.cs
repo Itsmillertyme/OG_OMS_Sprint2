@@ -6,18 +6,21 @@
         string salesID;
         string deliveryID;
         DateTime deliveryDate;
+        List<InventoryItem> cartItems;
 
         //**Constructors**
         public ReviewOrder() {
+
             InitializeComponent();
+
         }
         //
         public ReviewOrder(string acctID, string salesID, string deliveryID, DateTime deliveryDate) {
-
             this.acctID = acctID;
             this.salesID = salesID;
             this.deliveryID = deliveryID;
             this.deliveryDate = deliveryDate;
+            cartItems = new List<InventoryItem>();
 
             InitializeComponent();
         }
@@ -31,12 +34,14 @@
         }
         //        
         private void ReviewOrder_Load(object sender, EventArgs e) {
-            InitOrderInfoDGV(acctID, salesID, deliveryID, deliveryDate);
 
+            //initialize 
             CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
+            cartItems = cno.cartItems;
 
-            InitOrderCartDGV(cno.cartItems);
-
+            //init dgv's
+            InitOrderInfoDGV(acctID, salesID, deliveryID, deliveryDate);
+            InitOrderCartDGV(cartItems);
         }
         //
         private void dgvOrderInfo_SelectionChanged(object sender, EventArgs e) {
@@ -55,6 +60,10 @@
         }
         //
         private void rbnSubmit_Click(object sender, EventArgs e) {
+
+            //generate order
+            CreateOrderSlip();
+
             Hide();
             CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
             cno.Close();
@@ -156,6 +165,80 @@
 
             dgvOrderCart.AllowUserToAddRows = false;
         }
+        //
+        private void CreateOrderSlip() {
+            //get items in order as a list of OrderEntry objects
+            List<OrderEntry> entries = ConvertCartToOrderEntries(cartItems);
+
+            //geenrate random order number
+            int orderID = new Random().Next(1000000, 9999999);
+
+            //set file path
+            string filePath = "orders/Order" + orderID + ".txt";
+
+            //IO
+            try {
+                using (StreamWriter sw = new StreamWriter(filePath)) {
+
+                    //Title
+                    sw.WriteLine("ACME Distributing");
+                    sw.WriteLine();
+
+                    //OrderID
+                    sw.WriteLine("Order ID: " + orderID);
+                    //Cust Acct ID
+                    sw.WriteLine("Account ID: " + acctID);
+                    //Sales Rep ID
+                    sw.WriteLine("Sales Rep ID: " + Program.ActiveEmployee.SalesRepID);
+                    //Delivery Rep ID
+                    sw.WriteLine("Order ID: " + "JohnsonT_223451");
+                    //Delivery Date
+                    sw.WriteLine("Order ID: " + deliveryDate.Date.ToShortDateString());
+                    sw.WriteLine();
+
+                    //Products
+                    //header
+                    sw.WriteLine("Item Name:                    Quantity:");
+                    //items
+                    foreach (OrderEntry entry in entries) {
+                        sw.WriteLine(entry.item.description.PadRight(30) + entry.quantity);
+                        sw.WriteLine();
+                    }
+
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+        //
+        private List<OrderEntry> ConvertCartToOrderEntries(List<InventoryItem> cartItems) {
+
+            List<OrderEntry> orderEntries = new List<OrderEntry>();
+
+            foreach (InventoryItem item in cartItems) {
+
+                bool prevEntry = false;
+
+                for (int i = 0; i < orderEntries.Count; i++) {
+                    if (orderEntries[i].item.description == item.description) {
+                        int temp = orderEntries[i].quantity;
+                        temp++;
+                        orderEntries[i] = new OrderEntry(orderEntries[i].item, temp);
+                        prevEntry = true;
+                        break;
+                    }
+                }
+                if (!prevEntry) {
+                    orderEntries.Add(new OrderEntry(item, 1));
+                }
+            }
+
+
+            return orderEntries;
+        }
 
         //**Struct**
         struct OrderInfoEntry {
@@ -169,6 +252,16 @@
                 this.salesID = salesID;
                 this.deliveryID = deliveryID;
                 this.deliveryDate = deliveryDate;
+            }
+        }
+
+        struct OrderEntry {
+            public InventoryItem item;
+            public int quantity;
+
+            public OrderEntry(InventoryItem item, int quantity) {
+                this.item = item;
+                this.quantity = quantity;
             }
         }
     }

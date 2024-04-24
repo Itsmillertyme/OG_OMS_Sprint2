@@ -13,7 +13,6 @@
         //
         public CustomerManagement(List<Customer> customers) : this() {
             this.customers = customers;
-            SetDGVFromList(customers);
 
         }
 
@@ -41,7 +40,7 @@
 
             customers = ReadCustomersFromFile(filePath);
 
-            SetDGVFromList(customers);
+            SetDGVFromList(GetEmployeeCustomers(Program.ActiveEmployee.SalesRepID));
         }
 
         //**Utility Methods**
@@ -73,7 +72,7 @@
 
         }
         //
-        private List<Customer> ReadCustomersFromFile(string filePath) {
+        public static List<Customer> ReadCustomersFromFile(string filePath) {
 
             List<Customer> customers = new List<Customer>();
             try {
@@ -81,7 +80,7 @@
                     string line;
                     while ((line = sr.ReadLine()) != null) {
                         // Split the line by comma
-                        string[] data = line.Split(',');
+                        string[] data = line.Split(", ");
 
                         // Extract fields for creating Customer
                         string fullName = data[0] + ", " + data[1];
@@ -102,7 +101,19 @@
             return customers;
 
         }
+        //
+        public static List<Customer> GetEmployeeCustomers(string salesRepID) {
+            List<Customer> validCustomers = new List<Customer>();
 
+            foreach (Customer customer in ReadCustomersFromFile("MasterCustomerList.txt")) {
+                if (customer.SalesRepID.Equals(salesRepID)) {
+                    validCustomers.Add(customer);
+                }
+            }
+
+            return validCustomers;
+
+        }
 
         //**Struct**
         struct TableEntry {

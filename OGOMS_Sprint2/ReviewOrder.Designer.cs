@@ -101,6 +101,7 @@
             // 
             // lblOrderInfo
             // 
+            lblOrderInfo.Anchor = AnchorStyles.Top;
             lblOrderInfo.AutoSize = true;
             lblOrderInfo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblOrderInfo.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -112,6 +113,7 @@
             // 
             // lblYourOrder
             // 
+            lblYourOrder.Anchor = AnchorStyles.Top;
             lblYourOrder.AutoSize = true;
             lblYourOrder.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblYourOrder.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -123,6 +125,7 @@
             // 
             // dgvOrderInfo
             // 
+            dgvOrderInfo.Anchor = AnchorStyles.Top;
             dgvOrderInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvOrderInfo.BackgroundColor = Color.FromArgb(  222,   235,   247);
             dgvOrderInfo.BorderStyle = BorderStyle.None;
@@ -153,6 +156,7 @@
             // 
             // dgvOrderCart
             // 
+            dgvOrderCart.Anchor = AnchorStyles.Top;
             dgvOrderCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvOrderCart.BackgroundColor = Color.FromArgb(  222,   235,   247);
             dgvOrderCart.BorderStyle = BorderStyle.None;
@@ -183,6 +187,7 @@
             // 
             // rbnBack
             // 
+            rbnBack.Anchor =  AnchorStyles.Bottom | AnchorStyles.Left;
             rbnBack.BackColor = Color.FromArgb(  46,   117,   182);
             rbnBack.FlatAppearance.BorderSize = 0;
             rbnBack.FlatStyle = FlatStyle.Flat;
@@ -198,6 +203,7 @@
             // 
             // rbnSubmit
             // 
+            rbnSubmit.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
             rbnSubmit.BackColor = Color.FromArgb(  46,   117,   182);
             rbnSubmit.FlatAppearance.BorderSize = 0;
             rbnSubmit.FlatStyle = FlatStyle.Flat;
@@ -224,7 +230,6 @@
             Controls.Add(lblYourOrder);
             Controls.Add(lblOrderInfo);
             Controls.Add(pnlMenu);
-            MaximizeBox = false;
             Name = "ReviewOrder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";

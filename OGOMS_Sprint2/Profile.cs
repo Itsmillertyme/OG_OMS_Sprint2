@@ -28,19 +28,19 @@
         private void btnSignOut_Click(object sender, EventArgs e) {
             //hide profile form
             Hide();
+            //get reference to 'home' form
+            Home home = (Home) Application.OpenForms["Home"];
+            home.Hide();
+            home.Close();
+            home.Dispose();
 
             Login newLogin = new Login();
             newLogin.ShowDialog();
 
-            //get reference to 'home' form
-            //Home home = (Home) Application.OpenForms["Home"];
-            for (int i = 0; i < Application.OpenForms.Count; i++) {
+            Close();
 
-                if (Application.OpenForms[i].Name != "Profile") {
-                    Application.OpenForms[i].Close();
-                    Application.OpenForms[i].Dispose();
-                }
-            }
+
+
 
         }
         //

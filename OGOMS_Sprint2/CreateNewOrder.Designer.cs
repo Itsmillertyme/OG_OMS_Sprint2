@@ -40,7 +40,6 @@
             pnlCartHeader = new Panel();
             lblCartLabel = new Label();
             rbnSubmit = new CustomControls.RoundedButton();
-            tbxAcctID = new TextBox();
             lblAccountID = new Label();
             tbxSalesID = new TextBox();
             lblSalesID = new Label();
@@ -49,6 +48,7 @@
             dtpDeliveryDate = new DateTimePicker();
             lblDeliveryDate = new Label();
             tbxItemSearch = new TextBox();
+            cbxCustAccounts = new ComboBox();
             pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) dgvItemSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize) dgvCart).BeginInit();
@@ -114,6 +114,7 @@
             // 
             // lblCreateNewOrder
             // 
+            lblCreateNewOrder.Anchor = AnchorStyles.Top;
             lblCreateNewOrder.AutoSize = true;
             lblCreateNewOrder.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblCreateNewOrder.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -127,6 +128,7 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.FromArgb(  224,   224,   224);
             dgvItemSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvItemSearch.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgvItemSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvItemSearch.BackgroundColor = Color.FromArgb(  222,   235,   247);
             dgvItemSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -162,6 +164,7 @@
             // 
             dataGridViewCellStyle3.BackColor = Color.FromArgb(  224,   224,   224);
             dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvCart.Anchor =  AnchorStyles.Bottom | AnchorStyles.Left;
             dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCart.BackgroundColor = Color.FromArgb(  222,   235,   247);
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -191,6 +194,7 @@
             // 
             // pnlCartHeader
             // 
+            pnlCartHeader.Anchor =  AnchorStyles.Bottom | AnchorStyles.Left;
             pnlCartHeader.BackColor = Color.FromArgb(  47,   85,   151);
             pnlCartHeader.Controls.Add(lblCartLabel);
             pnlCartHeader.Location = new Point(12, 310);
@@ -213,6 +217,7 @@
             // 
             // rbnSubmit
             // 
+            rbnSubmit.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
             rbnSubmit.BackColor = Color.FromArgb(  46,   117,   182);
             rbnSubmit.FlatAppearance.BorderSize = 0;
             rbnSubmit.FlatStyle = FlatStyle.Flat;
@@ -226,17 +231,9 @@
             rbnSubmit.UseVisualStyleBackColor = false;
             rbnSubmit.Click += rbnSubmit_Click;
             // 
-            // tbxAcctID
-            // 
-            tbxAcctID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
-            tbxAcctID.Location = new Point(641, 130);
-            tbxAcctID.MaxLength = 55;
-            tbxAcctID.Name = "tbxAcctID";
-            tbxAcctID.Size = new Size(286, 29);
-            tbxAcctID.TabIndex = 28;
-            // 
             // lblAccountID
             // 
+            lblAccountID.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             lblAccountID.AutoSize = true;
             lblAccountID.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblAccountID.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -248,6 +245,7 @@
             // 
             // tbxSalesID
             // 
+            tbxSalesID.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             tbxSalesID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxSalesID.Location = new Point(641, 216);
             tbxSalesID.MaxLength = 55;
@@ -257,6 +255,7 @@
             // 
             // lblSalesID
             // 
+            lblSalesID.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             lblSalesID.AutoSize = true;
             lblSalesID.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblSalesID.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -268,6 +267,7 @@
             // 
             // tbxDeliveryID
             // 
+            tbxDeliveryID.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             tbxDeliveryID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point,  0);
             tbxDeliveryID.Location = new Point(641, 302);
             tbxDeliveryID.MaxLength = 55;
@@ -277,6 +277,7 @@
             // 
             // lblDeliveryID
             // 
+            lblDeliveryID.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             lblDeliveryID.AutoSize = true;
             lblDeliveryID.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblDeliveryID.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -288,6 +289,7 @@
             // 
             // dtpDeliveryDate
             // 
+            dtpDeliveryDate.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             dtpDeliveryDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point,  0);
             dtpDeliveryDate.Location = new Point(641, 388);
             dtpDeliveryDate.Name = "dtpDeliveryDate";
@@ -296,6 +298,7 @@
             // 
             // lblDeliveryDate
             // 
+            lblDeliveryDate.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
             lblDeliveryDate.AutoSize = true;
             lblDeliveryDate.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblDeliveryDate.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -315,12 +318,23 @@
             tbxItemSearch.TabIndex = 35;
             tbxItemSearch.TextChanged += tbxItemSearch_TextChanged;
             // 
+            // cbxCustAccounts
+            // 
+            cbxCustAccounts.Anchor =  AnchorStyles.Top | AnchorStyles.Right;
+            cbxCustAccounts.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point,  0);
+            cbxCustAccounts.FormattingEnabled = true;
+            cbxCustAccounts.Location = new Point(641, 130);
+            cbxCustAccounts.Name = "cbxCustAccounts";
+            cbxCustAccounts.Size = new Size(286, 29);
+            cbxCustAccounts.TabIndex = 37;
+            // 
             // CreateNewOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(  222,   235,   247);
             ClientSize = new Size(984, 561);
+            Controls.Add(cbxCustAccounts);
             Controls.Add(tbxItemSearch);
             Controls.Add(lblDeliveryDate);
             Controls.Add(dtpDeliveryDate);
@@ -328,7 +342,6 @@
             Controls.Add(lblDeliveryID);
             Controls.Add(tbxSalesID);
             Controls.Add(lblSalesID);
-            Controls.Add(tbxAcctID);
             Controls.Add(lblAccountID);
             Controls.Add(rbnSubmit);
             Controls.Add(pnlCartHeader);
@@ -337,7 +350,6 @@
             Controls.Add(dgvItemSearch);
             Controls.Add(lblCreateNewOrder);
             Controls.Add(pnlMenu);
-            MaximizeBox = false;
             Name = "CreateNewOrder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";
@@ -365,7 +377,6 @@
         private Panel pnlCartHeader;
         private Label lblCartLabel;
         private CustomControls.RoundedButton rbnSubmit;
-        private TextBox tbxAcctID;
         private Label lblAccountID;
         private TextBox tbxSalesID;
         private Label lblSalesID;
@@ -374,5 +385,6 @@
         private DateTimePicker dtpDeliveryDate;
         private Label lblDeliveryDate;
         private TextBox tbxItemSearch;
+        private ComboBox cbxCustAccounts;
     }
 }

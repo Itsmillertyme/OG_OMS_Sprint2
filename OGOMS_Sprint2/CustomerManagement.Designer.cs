@@ -98,6 +98,7 @@
             // 
             // lblCustomerManagement
             // 
+            lblCustomerManagement.Anchor = AnchorStyles.Top;
             lblCustomerManagement.AutoSize = true;
             lblCustomerManagement.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point,  0);
             lblCustomerManagement.ForeColor = Color.FromArgb(  18,   47,   94);
@@ -113,6 +114,7 @@
             dgvCustomerManagement.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCustomerManagement.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCustomerManagement.Anchor =  AnchorStyles.Top | AnchorStyles.Bottom;
             dgvCustomerManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCustomerManagement.BackgroundColor = Color.FromArgb(  222,   235,   247);
             dgvCustomerManagement.BorderStyle = BorderStyle.None;
@@ -158,6 +160,7 @@
             // 
             // rbnAddNewCust
             // 
+            rbnAddNewCust.Anchor = AnchorStyles.Top;
             rbnAddNewCust.BackColor = Color.FromArgb(  46,   117,   182);
             rbnAddNewCust.FlatAppearance.BorderSize = 0;
             rbnAddNewCust.FlatStyle = FlatStyle.Flat;
@@ -181,7 +184,6 @@
             Controls.Add(dgvCustomerManagement);
             Controls.Add(lblCustomerManagement);
             Controls.Add(pnlMenu);
-            MaximizeBox = false;
             Name = "CustomerManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OG OMS - Prototype, Sprint 2";
