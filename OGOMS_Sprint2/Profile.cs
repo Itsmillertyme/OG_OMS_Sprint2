@@ -1,6 +1,7 @@
 ﻿namespace OGOMS_Sprint2 {
     public partial class Profile : Form {
 
+        //**Variables**
         string empName;
         string empUsername;
         string empSalesID;
@@ -9,10 +10,7 @@
         //
         Form prevForm;
 
-        public Profile() {
-            InitializeComponent();
-        }
-
+        //**Contructors**
         public Profile(Employee loggedInEmp, Form prevForm) {
 
             InitializeComponent();
@@ -64,6 +62,9 @@
         }
 
         //**Utility Methods**
+        /// <summary>
+        /// Updates the label controls on the form with the proper employee information
+        /// </summary>
         private void UpdateLabels() {
             lblProfileName.Text = empName;
             lblUsername_Display.Text = empUsername;

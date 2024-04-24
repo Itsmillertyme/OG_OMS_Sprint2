@@ -91,6 +91,13 @@
 
 
         //**Utility Methods**
+        /// <summary>
+        /// Initializes the Order information DataGridView 
+        /// </summary>
+        /// <param name="acctID">Customer account ID</param>
+        /// <param name="salesID"> Sales Rep ID</param>
+        /// <param name="deliveryID">Delivery Rep ID</param>
+        /// <param name="deliveryDate">Delivery Date</param>
         void InitOrderInfoDGV(string acctID, string salesID, string deliveryID, DateTime deliveryDate) {
 
 
@@ -118,6 +125,10 @@
             dgvOrderInfo.AllowUserToAddRows = false;
         }
         //
+        /// <summary>
+        /// Initializes the order Cart DataGridView
+        /// </summary>
+        /// <param name="cartItems"> List of items in the cart</param>
         void InitOrderCartDGV(List<InventoryItem> cartItems) {
 
             List<string[]> entries = new List<string[]>();
@@ -184,6 +195,9 @@
             dgvOrderCart.AllowUserToAddRows = false;
         }
         //
+        /// <summary>
+        /// Generates a .txt file formatted with the order information
+        /// </summary>
         private void CreateOrderSlip() {
             //get items in order as a list of OrderEntry objects
             List<OrderEntry> entries = ConvertCartToOrderEntries(cartItems);
@@ -259,6 +273,9 @@
         }
 
         //**Struct**
+        /// <summary>
+        /// Struct for housing the Order Info DGV entries
+        /// </summary>
         struct OrderInfoEntry {
             public string acctID;
             public string salesID;
@@ -272,7 +289,10 @@
                 this.deliveryDate = deliveryDate;
             }
         }
-
+        //
+        /// <summary>
+        /// Struct for housing the Order DGV entries
+        /// </summary>
         struct OrderEntry {
             public InventoryItem item;
             public int quantity;

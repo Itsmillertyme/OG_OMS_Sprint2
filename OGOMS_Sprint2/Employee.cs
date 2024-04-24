@@ -19,6 +19,7 @@
         public string Password { get => _password; set => _password = value; }
         public string SalesRepID { get => _salesRepID; set => _salesRepID = value; }
 
+        //**Contructors**
         public Employee(int empID, string firstName, string lastName, string email, string username, string password, string salesRepID) {
 
             _empID = empID;
@@ -31,7 +32,11 @@
 
         }
 
-        // ToString Override designed for testing purposes; Displays all attributes in a neat format. 
+        //  
+        /// <summary>
+        /// ToString Override designed for testing purposes; Displays all attributes in a neat format.
+        /// </summary>
+        /// <returns>String representation of this object</returns>
         public override string ToString() {
             return (_firstName + " " + _lastName + ":" + "\n  EmpID: " + _empID + "\n  Sale Rep ID: " + _salesRepID + "\n  Email: " + _email + "\n  Username: " + _username + "\n  Password: " + _password);
         }

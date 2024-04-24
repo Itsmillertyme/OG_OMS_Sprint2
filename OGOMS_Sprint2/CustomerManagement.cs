@@ -10,11 +10,6 @@
             customers = new List<Customer>();
             InitializeComponent();
         }
-        //
-        public CustomerManagement(List<Customer> customers) : this() {
-            this.customers = customers;
-
-        }
 
         //**Event Handlers**
         private void btnHome_Click(object sender, EventArgs e) {
@@ -55,6 +50,10 @@
         }
 
         //**Utility Methods**
+        /// <summary>
+        /// Updates the Customer Data Grid View from a given list
+        /// </summary>
+        /// <param name="customers">List of Customer objects</param>
         private void SetDGVFromList(List<Customer> customers) {
             List<TableEntry> entries = new List<TableEntry>();
             foreach (Customer customer in customers) {
@@ -83,6 +82,11 @@
 
         }
         //
+        /// <summary>
+        /// Reads in customer information from 'database' file
+        /// </summary>
+        /// <param name="filePath">File path to file</param>
+        /// <returns>List of Customer objects</returns>
         public static List<Customer> ReadCustomersFromFile(string filePath) {
 
             List<Customer> customers = new List<Customer>();
@@ -113,6 +117,11 @@
 
         }
         //
+        /// <summary>
+        /// Creates a list of customers that are assigned to a sales employee given a Sales Rep ID
+        /// </summary>
+        /// <param name="salesRepID">Sales Rep ID</param>
+        /// <returns>List of customer objects</returns>
         public static List<Customer> GetEmployeeCustomers(string salesRepID) {
             List<Customer> validCustomers = new List<Customer>();
 
@@ -127,7 +136,9 @@
         }
 
 
-
+        /// <summary>
+        /// Struct representing a Customer entry in the data grid view
+        /// </summary>
         //**Struct**
         struct TableEntry {
             public string Name { get; set; }

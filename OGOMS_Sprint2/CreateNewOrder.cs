@@ -7,9 +7,10 @@ namespace OGOMS_Sprint2 {
         public List<InventoryItem> cartItems { get; } = new List<InventoryItem>();
         List<InventoryItem> fullProductList = new List<InventoryItem>();
         List<InventoryItem> currentProductList = new List<InventoryItem>();
-
+        //
         List<Customer> customerList = new List<Customer>();
 
+        //**Constructors**
         public CreateNewOrder() {
             InitializeComponent();
         }
@@ -167,6 +168,10 @@ namespace OGOMS_Sprint2 {
         }
 
         //**Utility Methods**
+        /// <summary>
+        /// Updates the products data grid view 
+        /// </summary>
+        /// <param name="items"> list of items to put in DGV</param>
         void UpdateProductDGV(List<InventoryItem> items) {
             dgvItemSearch.DataSource = null;
             dgvItemSearch.Columns.Clear();
@@ -203,6 +208,10 @@ namespace OGOMS_Sprint2 {
 
         }
         //
+        /// <summary>
+        /// Updates the cart items data grid view
+        /// </summary>
+        /// <param name="cartItems">Items to put in DGV</param>
         void UpdateCartDGV(List<InventoryItem> cartItems) {
 
             dgvCart.DataSource = null;
@@ -267,8 +276,10 @@ namespace OGOMS_Sprint2 {
 
         }
 
-
         //**Structs**
+        /// <summary>
+        /// Struct representing an entry into the product dgv
+        /// </summary>
         struct ProductTableEntry {
             public string productDesc { get; set; }
             public string brand { get; set; }
@@ -295,6 +306,10 @@ namespace OGOMS_Sprint2 {
             }
 
         }
+        //
+        /// <summary>
+        /// Struct representing an entry into the cart dgv
+        /// </summary>
         struct CartTableEntry {
             public string productDesc { get; set; }
             public string productID { get; set; }

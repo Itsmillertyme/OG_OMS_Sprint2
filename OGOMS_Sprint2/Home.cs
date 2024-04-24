@@ -1,5 +1,7 @@
 namespace OGOMS_Sprint2 {
     public partial class Home : Form {
+
+        //**Constructors**
         public Home() {
             InitializeComponent();
         }

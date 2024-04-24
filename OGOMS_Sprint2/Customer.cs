@@ -27,6 +27,10 @@
 
         }
 
+        /// <summary>
+        /// converts object into formatted string for 'database' entry.
+        /// </summary>
+        /// <returns>String representation of this object for database entry</returns>
         public string ToDatabaseFileEntry() {
 
             return _name + ", " + _deliveryAddress + ", " + _deliveryHours + ", " + _custID + ", " + _salesRepID;

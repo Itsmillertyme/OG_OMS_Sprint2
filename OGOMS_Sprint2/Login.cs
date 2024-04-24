@@ -76,6 +76,10 @@
         }
 
         //**Utility Methods**
+        /// <summary>
+        /// Validates the login credentials against the 'database' file of employees
+        /// </summary>
+        /// <returns> Employee object who succesfully logged in</returns>
         private Employee ValidateCredentials() {
 
             //grab text box text
@@ -94,6 +98,10 @@
             return null;
         }
         //
+        /// <summary>
+        /// Executes a timer to act as a delay while still allowing form to process events
+        /// </summary>
+        /// <param name="milliseconds">Wait time in milliseconds</param>
         private void wait(int milliseconds) {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             if (milliseconds == 0 || milliseconds < 0) return;

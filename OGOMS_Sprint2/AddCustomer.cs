@@ -1,5 +1,7 @@
 ﻿namespace OGOMS_Sprint2 {
     public partial class AddCustomer : Form {
+
+        //**Constructors**
         public AddCustomer() {
             InitializeComponent();
         }
@@ -39,6 +41,10 @@
         }
 
         //**Utility Methods**
+        /// <summary>
+        /// Takes information from form controls and creates customer object
+        /// </summary>
+        /// <returns>new Customer object</returns>
         private Customer CreateNewCustomer() {
             string[] names = tbxCustName.Text.Split(' ');
             string name = names[1] + ", " + names[0];
@@ -57,6 +63,10 @@
             return newCust;
         }
         //
+        /// <summary>
+        /// Appends customer to end of 'database' file
+        /// </summary>
+        /// <param name="customer">Custome object to append</param>
         private void AppendCustomerToFile(Customer customer) {
             string filePath = "MasterCustomerList.txt";
             try {
@@ -69,6 +79,11 @@
             }
         }
         //
+        /// <summary>
+        /// Formats a DataTime.ToString() intoproper format for the form
+        /// </summary>
+        /// <param name="timeString"> DateTime.ToTstring()</param>
+        /// <returns>Formatted date string</returns>
         private string FormatTimeString(string timeString) {
             string output = "";
 
