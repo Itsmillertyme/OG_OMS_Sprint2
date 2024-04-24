@@ -20,6 +20,12 @@
         private void btnHome_Click(object sender, EventArgs e) {
             Hide();
             Home home = new Home();
+            if (WindowState == FormWindowState.Maximized) {
+                home.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                home.Size = Size;
+            }
             home.ShowDialog();
             Close();
 
@@ -41,6 +47,11 @@
             customers = ReadCustomersFromFile(filePath);
 
             SetDGVFromList(GetEmployeeCustomers(Program.ActiveEmployee.SalesRepID));
+        }
+        //
+        private void btnProfile_Click(object sender, EventArgs e) {
+            Profile profile = new Profile(Program.ActiveEmployee, this);
+            profile.Show();
         }
 
         //**Utility Methods**
@@ -114,6 +125,8 @@
             return validCustomers;
 
         }
+
+
 
         //**Struct**
         struct TableEntry {

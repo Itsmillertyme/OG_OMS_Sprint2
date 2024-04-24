@@ -77,16 +77,20 @@ namespace OGOMS_Sprint2 {
         private void btnHome_Click(object sender, EventArgs e) {
             Hide();
             Home home = new Home();
+            if (WindowState == FormWindowState.Maximized) {
+                home.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                home.Size = Size;
+            }
             home.ShowDialog();
             Close();
 
         }
         //
         private void btnProfile_Click(object sender, EventArgs e) {
-            Hide();
-            Profile profile = new Profile();
-            profile.ShowDialog();
-            Close();
+            Profile profile = new Profile(Program.ActiveEmployee, this);
+            profile.Show();
         }
         //
         private void dgvItemSearch_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -122,6 +126,12 @@ namespace OGOMS_Sprint2 {
 
             Hide();
             ReviewOrder ro = new ReviewOrder(customerList[cbxCustAccounts.SelectedIndex].CustID.ToString(), tbxSalesID.Text, tbxDeliveryID.Text, dtpDeliveryDate.Value);
+            if (WindowState == FormWindowState.Maximized) {
+                ro.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                ro.Size = Size;
+            }
             ro.ShowDialog();
             Close();
             //Close this form after order submission

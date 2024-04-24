@@ -26,6 +26,12 @@
                 //change forms
                 Hide();
                 _2FA _2fa = new _2FA();
+                if (WindowState == FormWindowState.Maximized) {
+                    _2fa.WindowState = FormWindowState.Maximized;
+                }
+                else {
+                    _2fa.Size = Size;
+                }
                 _2fa.ShowDialog();
                 Close();
             }

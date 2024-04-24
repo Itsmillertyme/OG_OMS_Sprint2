@@ -29,6 +29,12 @@
         private void btnHome_Click(object sender, EventArgs e) {
             Hide();
             Home home = new Home();
+            if (WindowState == FormWindowState.Maximized) {
+                home.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                home.Size = Size;
+            }
             home.ShowDialog();
             Close();
         }
@@ -68,9 +74,21 @@
             CreateNewOrder cno = (CreateNewOrder) Application.OpenForms["CreateNewOrder"];
             cno.Close();
             OrderSubmitted os = new OrderSubmitted();
+            if (WindowState == FormWindowState.Maximized) {
+                os.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                os.Size = Size;
+            }
             os.ShowDialog();
             Close();
         }
+        //
+        private void btnProfile_Click(object sender, EventArgs e) {
+            Profile profile = new Profile(Program.ActiveEmployee, this);
+            profile.Show();
+        }
+
 
         //**Utility Methods**
         void InitOrderInfoDGV(string acctID, string salesID, string deliveryID, DateTime deliveryDate) {

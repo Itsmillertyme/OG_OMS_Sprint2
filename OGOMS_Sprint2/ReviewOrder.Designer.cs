@@ -98,6 +98,7 @@
             btnProfile.Size = new Size(44, 44);
             btnProfile.TabIndex = 1;
             btnProfile.UseVisualStyleBackColor = false;
+            btnProfile.Click += btnProfile_Click;
             // 
             // lblOrderInfo
             // 

@@ -9,21 +9,33 @@
             //Code to add customer to 'Database' File
             AppendCustomerToFile(CreateNewCustomer());
 
+            Hide();
+
+            //get reference to old 'Customermanagement' form
             CustomerManagement oldCM = (CustomerManagement) Application.OpenForms["CustomerManagement"];
+
+            //create new form
+            CustomerManagement newCM = new CustomerManagement();
+
+            //window logic
+            if (oldCM.WindowState == FormWindowState.Maximized) {
+                newCM.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                newCM.Size = oldCM.Size;
+            }
 
             oldCM.Hide();
             oldCM.Close();
             oldCM.Dispose();
 
-            Hide();
-            CustomerManagement customerManagement = new CustomerManagement();
-            customerManagement.ShowDialog();
+            newCM.ShowDialog();
             Close();
         }
         //
         private void btnBack_Click(object sender, EventArgs e) {
-            CustomerManagement customerManagement = new CustomerManagement();
-            customerManagement.Show();
+            Hide();
+            Close();
         }
 
         //**Utility Methods**
