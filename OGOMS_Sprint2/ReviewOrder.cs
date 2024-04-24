@@ -209,9 +209,9 @@
                     //Sales Rep ID
                     sw.WriteLine("Sales Rep ID: " + Program.ActiveEmployee.SalesRepID);
                     //Delivery Rep ID
-                    sw.WriteLine("Order ID: " + "JohnsonT_223451");
+                    sw.WriteLine("Delivery Rep ID: " + "JohnsonT_223451");
                     //Delivery Date
-                    sw.WriteLine("Order ID: " + deliveryDate.Date.ToShortDateString());
+                    sw.WriteLine("Delivery Date: " + deliveryDate.Date.ToShortDateString());
                     sw.WriteLine();
 
                     //Products
