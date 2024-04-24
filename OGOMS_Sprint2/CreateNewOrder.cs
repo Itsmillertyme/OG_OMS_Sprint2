@@ -133,7 +133,6 @@ namespace OGOMS_Sprint2 {
                 ro.Size = Size;
             }
             ro.ShowDialog();
-            Close();
             //Close this form after order submission
         }
         //

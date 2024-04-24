@@ -187,7 +187,7 @@
             dgvCart.Location = new Point(12, 345);
             dgvCart.Name = "dgvCart";
             dgvCart.RowHeadersVisible = false;
-            dgvCart.Size = new Size(500, 130);
+            dgvCart.Size = new Size(500, 204);
             dgvCart.TabIndex = 9;
             dgvCart.CellClick += dgvCart_CellClick;
             dgvCart.SelectionChanged += dgvCart_SelectionChanged;
